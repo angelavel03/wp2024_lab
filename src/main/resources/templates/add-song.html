@@ -14,7 +14,7 @@
 <form action="/songs/add" method="post">
     <input type="hidden" name="songId">
     <div>
-        <label for="trackId">Title</label>
+        <label for="trackId">TrackId</label>
         <input type="text" name="trackId" id="trackId"
                th:value="${(songToEdit != null) ? songToEdit.getTrackId() : ''}">
         <br/>
