@@ -14,33 +14,31 @@
     <h1>Welcome to My Music Store</h1>
 </header>
 <main>
-    <h2>Search song:</h2>
-
-    <form action="/listSongs" method="post">
-        <input type="text" name="text">
-        <input type="submit" value="search">
+    <h2>Search Song:</h2>
+    <form action="/songs" method="GET">
+        <input type="text" name="search">
+        <input type="submit" value="Search">
     </form>
-
     <h2>Choose a song:</h2>
     <form action="/artist" method="get">
-        <th:block th:each="song : ${songs}">
-            <input type="radio" name="trackId" th:value="${song.getTrackId()}">
-            <th:block th:text="${song}"></th:block>
-            <a th:href="@{'/songs/edit/{id}' (id=${song.getId()})}">
-                Edit
-            </a>
-            <a href="#">Delete</a>
+        <label th:each="song : ${songs}">
+            <input type="radio" name="songId" th:value="${song.getId()}">
+            <span th:text="${song}"></span>
+            <button type="button">
+                <a th:href="@{'/songs/edit/{id}' (id=${song.getId()})}">Edit</a>
+            </button>
+            <button type="button">
+                <a th:href="@{'/songs/delete/{id}' (id=${song.getId()})}">Delete</a>
+            </button>
             <br/>
-            <br>
-        </th:block>
-        <br>
+        </label>
+        <br/>
         <input type='submit' value='Submit'>
     </form>
     <h2>Add New Song:</h2>
     <a href="/songs/add">
         <button>Add new song</button>
     </a>
-
 </main>
 </body>
 </html>

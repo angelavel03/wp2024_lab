@@ -1,19 +1,28 @@
 package mk.finki.ukim.wp.lab.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Generated;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Setter
-@Getter
-@AllArgsConstructor
-
+@Data
+@Entity
+@NoArgsConstructor
+@Table(name = "artists")
 public class Artist {
-    Long id;
-    String firstName;
-    String lastName;
-    String bio;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @Column
+    private String bio;
+
+    public Artist(String firstName, String lastName, String bio) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bio = bio;
+    }
 
     @Override
     public String toString() {

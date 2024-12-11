@@ -16,11 +16,11 @@ public class ArtistServiceImpl implements ArtistSerivce {
 
     @Override
     public List<Artist> listArtists() {
-        return artistRepository.findAll() ;
+        return artistRepository.findAll();
     }
 
     @Override
-    public Artist ArtistfindById(Long id) {
+    public Artist findById(Long id) {
         return artistRepository.findById(id).orElse(null);
     }
 }
